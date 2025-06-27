@@ -4,7 +4,7 @@ import Player from "../model/Player.js";
 class PlayerDAO {
     async getPlayersByClub(clubId) {
         const query = `
-            SELECT k.idkos, k.imekos, k.przkos, k.g, k.f, k.c, k.fpa
+            SELECT *
             FROM kosarkas k
             JOIN igra i ON k.idkos = i.kosarkas_idkos
             WHERE i.klub_idkl = $1

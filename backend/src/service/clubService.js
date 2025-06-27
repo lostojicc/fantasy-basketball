@@ -9,7 +9,14 @@ class ClubService {
 
         for (const club of clubs) {
             const players = await playerService.getPlayersByClub(club.id);
-            clubsWithPlayers.push(new ClubWithPlayersDTO(club, players));
+            const dto = new ClubWithPlayersDTO(club, players);
+            
+            // Add position statistics from the club model
+            dto.guardCount = club.guards;
+            dto.forwardCount = club.forwards;
+            dto.centerCount = club.centers;
+            
+            clubsWithPlayers.push(dto);
         }
 
         return clubsWithPlayers;

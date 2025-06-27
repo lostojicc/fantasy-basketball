@@ -15,6 +15,7 @@ class ClubUI {
             clubsWithPlayers.forEach((clubDTO, index) => {
                 console.log(`${index + 1}. ${clubDTO.name} (${clubDTO.country})`);
                 console.log(`   Players: ${clubDTO.playerCount}`);
+                console.log(`   Positions: Guards: ${clubDTO.guardCount} | Forwards: ${clubDTO.forwardCount} | Centers: ${clubDTO.centerCount}`);
                 console.log('   ──────────────────────────────────────────────');
                 
                 if (clubDTO.players.length === 0) {

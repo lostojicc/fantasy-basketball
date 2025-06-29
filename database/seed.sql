@@ -184,3 +184,45 @@ INSERT INTO se_nadmece VALUES (1, 2, 5, 3), (0, 2, 5, 4);
 INSERT INTO se_nadmece VALUES (1, 3, 5, 5), (0, 3, 5, 1);
 INSERT INTO se_nadmece VALUES (1, 4, 5, 2), (0, 4, 5, 3);
 INSERT INTO se_nadmece VALUES (1, 5, 5, 4), (0, 5, 5, 5);
+
+INSERT INTO se_takmici(tim_idt, runda_idr) VALUES 
+    (1, 1),
+    (1, 2),
+    (1, 3),
+    (1, 4),
+    (1, 5);
+
+INSERT INTO regrutuje(se_takmici_idt, se_takmici_idr, kosarkas_idkos) VALUES 
+    (1, 1, 10),
+    (1, 1, 17),
+    (1, 1, 20),
+    (1, 1, 24),
+    (1, 1, 6);
+
+INSERT INTO regrutuje(se_takmici_idt, se_takmici_idr, kosarkas_idkos) VALUES 
+    (1, 2, 10),
+    (1, 2, 4),
+    (1, 2, 8),
+    (1, 2, 24),
+    (1, 2, 6);
+
+INSERT INTO regrutuje(se_takmici_idt, se_takmici_idr, kosarkas_idkos) VALUES 
+    (1, 3, 10),
+    (1, 3, 4),
+    (1, 3, 9),
+    (1, 3, 1),
+    (1, 3, 6);
+
+INSERT INTO regrutuje(se_takmici_idt, se_takmici_idr, kosarkas_idkos) VALUES 
+    (1, 4, 7),
+    (1, 4, 4),
+    (1, 4, 9),
+    (1, 4, 1),
+    (1, 4, 12);
+
+INSERT INTO regrutuje(se_takmici_idt, se_takmici_idr, kosarkas_idkos) VALUES 
+    (1, 5, 2),
+    (1, 5, 4),
+    (1, 5, 9),
+    (1, 5, 6),
+    (1, 5, 12);

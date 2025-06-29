@@ -21,6 +21,27 @@ class PlayerDAO {
             row.fpa
         ));
     }
+
+    async getRecruitedPlayersForTeamAndRound(teamId, roundId) {
+        const query = `
+            SELECT 
+                k.idkos, k.imekos, k.przkos, k.g, k.f, k.c, k.fpa
+            FROM regrutuje r
+            JOIN kosarkas k ON r.kosarkas_idkos = k.idkos
+            WHERE r.se_takmici_idt = $1 AND r.se_takmici_idr = $2
+            ORDER BY k.imekos, k.przkos
+        `;
+        const result = await pool.query(query, [teamId, roundId]);
+        return result.rows.map(row => new Player(
+            row.idkos,
+            row.imekos,
+            row.przkos,
+            parseInt(row.g) === 1,
+            parseInt(row.f) === 1,
+            parseInt(row.c) === 1,
+            row.fpa
+        ));
+    }
 }
 
 export default new PlayerDAO();

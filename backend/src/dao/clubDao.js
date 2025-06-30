@@ -33,6 +33,26 @@ class ClubDAO {
             return club;
         });
     }
+
+    getClubById = async (clubId) => {
+        const query = `
+            SELECT *
+            FROM klub k
+            WHERE k.idkl = $1
+        `;
+
+        const result = await pool.query(query, [clubId]);
+        if (result.rows.length === 0) return null;
+        
+        const row = result.rows[0];
+        return new Club(
+            row.idkl,
+            row.nazkl,
+            row.drzkl,
+            row.kbiokl,
+            row.strkl
+        );
+    }
 }
 
 export default new ClubDAO();

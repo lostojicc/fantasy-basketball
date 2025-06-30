@@ -21,6 +21,10 @@ class ClubService {
 
         return clubsWithPlayers;
     }
+
+    getClubById = async (clubId) => {
+        return await clubDao.getClubById(clubId);
+    }
 }
 
 export default new ClubService();

@@ -3,6 +3,7 @@ import clubUI from "./ui-handler/clubUI.js";
 import roundUI from "./ui-handler/roundUI.js";
 import teamUI from "./ui-handler/teamUI.js";
 import gameUI from "./ui-handler/gameUI.js";
+import playerUI from "./ui-handler/playerUI.js";
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -14,7 +15,8 @@ const showMenu = () => {
     console.log('1. Display all clubs and their players');
     console.log('2. Check final scores for round');
     console.log('3. Display game results');
-    console.log('4. Exit');
+    console.log('4. Register new player to the league');
+    console.log('5. Exit');
     console.log('=============================================');
     
     rl.question('Choose an option: ', (choice) => {
@@ -36,6 +38,9 @@ const handleMenuChoice = async (choice) => {
             showMenu();
             break;
         case '4':
+            await startNewPlayerRegister();
+            break;
+        case '5':
             console.log('Goodbye!');
             rl.close();
             break;
@@ -43,6 +48,11 @@ const handleMenuChoice = async (choice) => {
             console.log('Invalid choice. Please try again.');
             showMenu();
     }
+}
+
+const startNewPlayerRegister = async () => {
+    await playerUI.displayPlayerRegistration(rl);
+    showMenu();
 }
 
 const handleTeamReport = async () => {

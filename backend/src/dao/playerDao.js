@@ -42,6 +42,47 @@ class PlayerDAO {
             row.fpa
         ));
     }
+
+    getNewId = async () => {
+        const query = "SELECT COALESCE(MAX(idkos), 0) + 1 AS next_id FROM kosarkas";
+        const result = await pool.query(query);
+        return result.rows[0].next_id;
+    }
+
+    registerNewPlayer = async (playerDto) => {
+        const client = await pool.connect();
+        try {
+            await client.query('BEGIN');
+            
+            const playerResult = await client.query(
+                'INSERT INTO kosarkas (idkos, imekos, przkos, g, f, c, fpa) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING idkos',
+                [
+                    await this.getNewId(), 
+                    playerDto.firstName, 
+                    playerDto.lastName, 
+                    playerDto.isGuard ? '1' : '0',
+                    playerDto.isForward ? '1' : '0',
+                    playerDto.isCenter ? '1' : '0',
+                    null
+                ]
+            );
+            const playerId = playerResult.rows[0].idkos;
+
+            await client.query(
+                'INSERT INTO igra (datpr, kosarkas_idkos, klub_idkl) VALUES ($1, $2, $3)',
+                [new Date(), playerId, playerDto.clubId]
+            );
+
+            await client.query('COMMIT');
+            console.log('✅ Transaction committed successfully');
+        } catch (error) {
+            await client.query('ROLLBACK');
+            console.log('❌ Transaction rolled back due to error:', error.message);
+            throw error;
+        } finally {
+            client.release();
+        }
+    }
 }
 
 export default new PlayerDAO();

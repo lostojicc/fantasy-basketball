@@ -38,6 +38,23 @@ class ClubUI {
             console.error('Error displaying clubs and players:', error);
         }
     }
+
+    async displayClubSelection() {
+        console.log('\n=== CLUB SELECTION ===');
+        const clubs = await clubService.getAllClubsWithPlayers();
+        
+        if (clubs.length === 0) {
+            console.log('No clubs available.');
+            return null;
+        }
+
+        console.log('Available clubs:');
+        clubs.forEach(club => {
+            console.log(`${club.id}. ${club.name} (${club.country})`);
+        });
+
+        return clubs;
+    }
 }
 
 export default new ClubUI(); 

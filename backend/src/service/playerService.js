@@ -8,6 +8,10 @@ class PlayerService {
     async getRecruitedPlayersForTeamAndRound(teamId, roundId) {
         return await playerDao.getRecruitedPlayersForTeamAndRound(teamId, roundId);
     }
+
+    registerNewPlayer = async (playerDto) => {
+        await playerDao.registerNewPlayer(playerDto);
+    };
 }
 
 export default new PlayerService();

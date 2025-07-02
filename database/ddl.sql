@@ -72,7 +72,7 @@ create table kosarkas (
     g char(1) not null,
     f char(1) not null,
     c char(1) not null,
-    fpa float not null
+    fpa float
 );
 
 alter table kosarkas

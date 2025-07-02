@@ -13,7 +13,7 @@ class ClubDAO {
             LEFT JOIN igra i ON k.idkl = i.klub_idkl
             LEFT JOIN kosarkas kos ON i.kosarkas_idkos = kos.idkos
             GROUP BY k.idkl, k.nazkl, k.drzkl, k.kbiokl, k.strkl
-            ORDER BY k.nazkl
+            ORDER BY k.idkl
         `;
         const result = await pool.query(query);
         return result.rows.map(row => {

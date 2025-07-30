@@ -6,7 +6,7 @@ class PlayerStatsDAO {
         const query = `
             SELECT 
                 os.igra_kosarkas_idkos, os.igra_klub_idkl, os.se_nadmece_rbu, 
-                os.se_nadmece_idr, os.se_nadmece_idkl, os.p, os.s, os.a, os.u, 
+                os.se_nadmece_idr, os.p, os.s, os.a, os.u, 
                 os.lg, os.b, os.pb, os.ps, os.f, os.psb, os.il
             FROM ostv_stat os
             JOIN regrutuje r ON os.igra_kosarkas_idkos = r.kosarkas_idkos

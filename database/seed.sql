@@ -1,6 +1,6 @@
 INSERT INTO korisnik(
 	idk, korime, sif, ime, prz, datrodj, drz, tipk)
-	VALUES (1, 'korisnik', 'sifra', 'Ime', 'Prezime', '2002-10-07', 'SRB', 'Admin');
+	VALUES (1, 'korisnik', 'sifra', 'Ime', 'Prezime', '2002-10-07', 'SRB', 'Igrac');
 
 INSERT INTO igrac(
 	idk)
